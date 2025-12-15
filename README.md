@@ -150,6 +150,7 @@ WantedBy=multi-user.target
 ##### sudo systemctl enable re_test.service   # 使能服务
 ##### sudo systemctl start re_test.service    # 开启服务
 ##### sudo systemctl stop re_test.service     # 停止服务
+##### sudo systemctl status re_test.service   # 查看是否生效
 
 
 

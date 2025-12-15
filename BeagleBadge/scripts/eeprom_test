@@ -1,0 +1,12 @@
+echo "查看容量"
+echo "========================================="
+dmesg | grep -i eeprom
+
+echo "写入hello"
+echo "请拉低WP引脚"
+cd /sys/class/i2c-dev/i2c-1/device/1-0050
+cat eeprom | hexdump -C
+echo hello > ./eeprom
+
+echo '========================================='
+echo “测试完成”

@@ -1,0 +1,11 @@
+
+echo "LPDDR4x 写速度测试"
+echo “===============================”
+
+sysbench memory --memory-oper=write --memory-total-size=48M --memory-block-size=1K --threads=2 run
+sleep 1
+
+echo “LPDDR4x 读速度测试”
+echo "==============================="
+sysbench memory --memory-oper=read --memory-total-size=48M --memory-block-size=1K --threads=2 run
+sleep 1

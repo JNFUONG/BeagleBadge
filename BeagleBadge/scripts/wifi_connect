@@ -1,0 +1,22 @@
+
+#!/bin/bash
+# 连接WiFi
+SSID='Xiaomi_E1B0'
+PASS='eetest2025'
+IFACE=wlan0
+
+echo "1. 连接WiFi: $SSID"
+wpa_cli -i $IFACE add_network
+wpa_cli -i $IFACE set_network 0 ssid "\"$SSID\""
+wpa_cli -i $IFACE set_network 0 psk "\"$PASS\""
+wpa_cli -i $IFACE enable_network 0
+wpa_cli -i $IFACE select_network 0
+sleep 5
+
+dhclient $IFACE
+
+echo "2. 查看WIFI获取的IP地址"
+ifconfig $IFACE
+
+#echo "3. Ping测试（1000个包）"
+#ping -c 1000 192.168.31.1

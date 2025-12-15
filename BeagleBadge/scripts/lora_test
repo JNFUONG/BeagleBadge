@@ -1,0 +1,2 @@
+cd /mnt
+./sx126x_demo tx 10

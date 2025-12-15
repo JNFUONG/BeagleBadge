@@ -1,0 +1,10 @@
+#/bin/bash
+
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color，用于重置颜色
+
+echo -e "${GREEN}IIC SCAN"
+echo -e "${GREEN}"请输入IIC线号"
+echo -e "${GREEN}"==============================================${NC}"
+echo "iic0:原理图wakeupiic , iic1:原理图iic0 , iic2:原理图iic1 , iic3:原理图iic2"
+i2cdetect -y -r $1

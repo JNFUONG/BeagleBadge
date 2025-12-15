@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# 简单DDR压力测试脚本 (基于 stressapptest)
+# 用法：./simple_ddr_stress.sh
+
+echo "=== 简单DDR压力测试启动 ==="
+echo "开始时间: $(date)"
+
+# 基本参数配置
+TEST_DURATION=43200      # 测试时长(秒)，12小时：43200
+MEMORY_SIZE=150          # 测试内存大小(MB)，根据系统调整
+THREAD_COUNT=2           # 内存拷贝线程数
+LOG_FILE="/tmp/ddr_stress.log"  # 日志文件路径
+
+# 检查stressapptest是否安装
+if ! command -v stressapptest &> /dev/null; then
+    echo "错误: 未找到 stressapptest，请先安装"
+    echo "安装命令(Ubuntu/Debian): sudo apt-get install stressapptest"
+    exit 1
+fi
+
+# 显示测试配置
+echo "测试配置:"
+echo "- 持续时间: $TEST_DURATION 秒 ($(($TEST_DURATION/3600)) 小时)"
+echo "- 测试内存: $MEMORY_SIZE MB"
+echo "- 线程数: $THREAD_COUNT"
+echo "- 日志文件: $LOG_FILE"
+echo ""
+
+# 执行压力测试[1,2,6](@ref)
+echo "开始执行stressapptest压力测试..."
+stressapptest -s $TEST_DURATION \
+               -M $MEMORY_SIZE \
+               -m $THREAD_COUNT \
+               -i $THREAD_COUNT \
+               -C $THREAD_COUNT \
+               -W \
+               --stop_on_errors \
+               -l $LOG_FILE
+
+# 检查测试结果
+TEST_RESULT=$?
+echo ""
+echo "=== 测试完成 ==="
+echo "结束时间: $(date)"
+
+if [ $TEST_RESULT -eq 0 ]; then
+    echo "✅ 测试结果: PASS - 未发现内存错误"
+    echo "详细日志请查看: $LOG_FILE"
+else
+    echo "❌ 测试结果: FAIL - 检测到内存错误"
+    echo "请检查详细日志: $LOG_FILE"
+    echo "错误信息摘要:"
+    tail -20 $LOG_FILE | grep -i "error\|fail\|mismatch" || tail -10 $LOG_FILE
+fi

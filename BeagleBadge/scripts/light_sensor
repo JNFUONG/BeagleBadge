@@ -1,0 +1,6 @@
+cd /sys/bus/iio/devices/iio\:device2
+for ((i=1;i<6;i++))
+do
+cat ./in_voltage2_raw
+sleep 1
+done

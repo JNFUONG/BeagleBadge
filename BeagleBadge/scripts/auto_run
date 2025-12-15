@@ -1,0 +1,17 @@
+# 创建服务：sudo nano /etc/systemd/system/re_test.service
+[Unit]
+Description=Hardware Test Suite
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/am62l/re_test
+WorkingDirectory=/home/am62l
+Restart=no
+User=am62l
+
+[Install]
+WantedBy=multi-user.target
+
+# sudo systemctl enable re_test.service
+# sudo systemctl start re_test.service

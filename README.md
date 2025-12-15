@@ -5,7 +5,7 @@
 #### 提交更改
 git add .    # 加载到临时仓库
 
-git commit -m "你的理由" # 确认上传你的代码和更改理由
+git commit -m "Change code" # 确认上传你的代码和更改理由
 
 git push origin main   # 上传更新的代码到仓库
 

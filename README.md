@@ -19,7 +19,7 @@ git pull origin main   # 拉取更新从代码库
 git push origin main
 
 
-### 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨硬件测试命令
+### 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨硬 件 测 试 命 令🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨
 
 #### 🎨RGB 测试
 cd /sys/class/leds/rgb\:red

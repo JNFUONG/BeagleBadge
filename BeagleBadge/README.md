@@ -1,4 +1,24 @@
+
 测试命令
+
+
+# 硬件测试命令
+
+## 🎨 RGB 测试
+bash
+cd /sys/class/leds/rgb\:red
+echo 255 > ./brightness
+echo 0 > ./brightness
+
+
+
+
+
+
+
+
+
+
 
 # rgb 测试
 cd /sys/class/leds/rgb\:red

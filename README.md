@@ -12,6 +12,17 @@ git push origin main   # 上传更新的代码到仓库
 #### 下载代码
 git clone https
 
+#### git合并，如果无法push的时候，请尝试
+git config pull.rebase false
+
+git pull origin main   # 拉取更新从代码库
+
+git push origin main
+
+
+
+
+
 ### 硬件测试命令
 
 #### 🎨RGB 测试

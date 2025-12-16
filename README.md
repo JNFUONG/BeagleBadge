@@ -177,6 +177,19 @@ dd if=/dev/zero of=/dev/mtdblock5 bs=1M count=10 oflag=direct
 
 ./test_gpio.sh 1
 
+#### 🎨U盘速度 测试 - 会损坏U盘速度
+##### 读速度测试
+sudo dd if=/dev/sda of=/dev/null bs=1M count=1024 iflag=direct status=progress
+##### 写速度测试
+sudo dd if=/dev/zero of=/dev/sda bs=1M count=1024 oflag=direct status=progress
+
+#### 🎨SD卡速度 测试 - 
+##### 写速度测试
+sudo dd if=/dev/zero of=/mnt/sd_test bs=10M count=10 oflag=direct status=progress
+##### 读速度测试
+sudo dd if=/mnt/sd_test of=/dev/null bs=10M count=10 iflag=direct status=progress
 
 
+
+ 
 
